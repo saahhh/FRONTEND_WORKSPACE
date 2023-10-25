@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        button{
+            background-color: #007bff;
+            color:#ffffff;
+            padding: 10px 20px; /*10px는 위아래, 20px는 좌우*/
+            cursor: pointer; /*커서를 포인트로 주면 마우스를 대면 손모양으로 바뀜*/
+            /*그림자를 추가해 효과주기*/
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            /*마우스를 대면(=호버 시) 색상과 반짝이는 효과 추가*/
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        /*마우스 호버시(애니메이션효과) 스타일 변경*/ /*버튼과 다른 클래스로 만들어야함*/
+        button:hover{
+            background-color: #0056b3;
+            box-shadow: 20px 20px 5px rgb(20 26 239/50%);
+        }
+        
+
+    </style>
+
+</head>
+<body>
+    <h2>새 게시글 작성</h2>
+    <button type="submit">작성완료</button>
+
+</body>
+
+
+
+</html>
