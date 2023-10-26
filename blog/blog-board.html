@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>블로그 게시판</title>
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        
+    </head>
+    <body>
+        <div id ="container">
+            <h1>블로그 게시판</h1>
+            <div id="posts">
+                <!--게시물 추가하는 공간-->
+            </div>
+            <h2>새 게시물 작성</h2>
+            <form id="postForm">
+                <label for="title">제목 : </label>
+                <input type="text" id="title" name="title" required> <!--required : 필수로 적어줘야함-->
+                <label for="content">내용 : </label>
+                <textarea id="content" name="content" required></textarea> <!--input은 닫는태그 안붙여되지만 textarea는 붙여야함-->
+                <button type="submit">게시하기</button>
+            </form>
+        </div>
+        <script>
+            const postForm = document.getElementById("postForm");
+            const posts = document.getElementById("posts");
+            const postArray = []; /*게시물을 저장하는 배열을 만들어준다*/
+
+            postForm.addEventListener("submit", function(event) { /*event : 코드에서는 발생한다의 뜻*/
+                event.preventDefault(); //없으면 게시가 안됨, 값이 초기화되기 때문, 이 명령어는 새로고침을 막아주는 것
+                
+                const title = postForm.title.value;
+                const content = postForm.content.value;
+                const date = new Date();
+                const post = {
+                    title,
+                    content,
+                    date,
+                    commnets:[], //const에서 마지막에도 ,를 붙여줘야한다
+                };
+                postArray.push(post); //게시물을 배열에 추가한다
+
+                //새 게시물을 담아줄 div생성
+                const postDiv = document.createElement("div");
+                postDiv.classList.add("post"); //classList :배열이기 때문에
+                postDiv.innerHTML = `
+                    <h3>${title}</h3>
+                    `;
+                posts.appendChild(postDiv);
+            });
+            
+        </script>
+    </body>
+    <foot>
+
+    </foot>
+</html>

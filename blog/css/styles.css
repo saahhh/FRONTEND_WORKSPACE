@@ -1,0 +1,31 @@
+/* * 하고 box-sizing: border-box;는 박스 사이즈 조절*/
+* { 
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f3f3;  
+}
+
+h1{
+    text-align: center;
+    font-size: 28px;
+}
+/*class는 . , id는 # (먼저 적용되는건 class)
+margin : 가운데로 정렬한다 */
+#container{
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.post{
+    border: solid #ddd;
+    margin: 10px 0;
+    padding: 20px;
+    background-color: #fff;
+}
+
