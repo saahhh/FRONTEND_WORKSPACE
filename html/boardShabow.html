@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <!-- ../ = 뒤에 있는 폴더부터 시작 ./ = 지금 내가 있는 위치 폴더부터 시작-->
     <!-- <style> 파일시트 가져오기 : 자바의 import와 같은 것이 link
-    type = text/css타입-->
+    type = text/css타입--> 
 </head>
 <body>
     <div class="container"> <!--class는 container박스는 하나다 라는 의미로 쓰임-->
@@ -19,10 +19,10 @@
             <li class="post-list li">
                 <h2>명동칼국수 역삼점</h2>
                 <p>명동칼국수 9000원</p>
+            </li>
             <li class="post">
                 <h2>신궁동 감자탕 역삼점</h2>
                 <p>뼈해장국 9000원</p>
-            </li>
             </li>
         </ul>
 
@@ -32,9 +32,43 @@
             <form class="post-form">
                 <input type="text" placeholder="제목">
                 <textarea placeholder="내용 작성하기"></textarea> <!--textarea는 상자가 늘어남-->
-                <button type="submit">작성완료</button>
+                <button type="submit" id="post-button">작성완료</button> <!-- class : 디자인할 때 , id : 고유한 ,.. 자바스크립트를 활용함-->
+           
+                <button onclick="hihibutton()">hi button</button> <!--onclick : 내가 작성한 함수()를 가져올거야-->
+                <button onclick="joinButton()">회원가입 하기</button>
+                <p id="joinCheck">회원가입을 하는 중입니다.</p>
             </form>
+            <script> /*script는 java script에 기반해서 쓰이는 것*/
+                function hihibutton() {
+                    alert("안녕 나는 버튼이라고해"); //alert:알림창
+                }
 
+                function joinButton() {
+                    var txt; //var:
+                    if(confirm("버튼클릭!")) {
+                        txt = "클릭완료";
+                    } else {
+                        txt = "회원가입을 완료하지 못했습니다.";
+                        document.getElementById("joinCheck").innerHTML = txt; //innerHTML= ;의 방식으로 변경가능
+                    }
+                }
+            </script>
+
+
+            <script> //스크립트 위치 잘 확인하기 
+                document.addEventListener("DOMContentLoaded", function(){ //addEventListener = 이벤트 시작, DOMContentLoaded = html 홈페이지 화면을 보여줄 수 있게 해주는 것 (preview는 vscode에서 제공하는 것)
+                    // document.addEventListener("DOMContentLoaded", (구버전) 쓰지 않아도 되는데  밑에 (1~3) function buttonClick(){ function(함수)를 써줬기 때문에
+                    
+                        //1.HTML 버튼 ID가져오기 (JS언어 / const:재사용 못하게하는 명령어)
+                    const postButton = document.getElementById("post-button"); //변수명을 element로 표현 
+                    //2.버튼을 클릭할 때 실행될 함수 정의
+                    function buttonClick(){
+                        alert("게시물의 내용을 작성해주세요.");
+                    }
+                    //3.버튼 클릭시 실행될 함수 연결
+                    postButton.addEventListener("click", buttonClick); //마우스로 클릭할 때만 실행한다
+                })
+            </script>
 
         </div>
 
@@ -44,7 +78,6 @@
     <!--<button type="submit">작성완료</button>-->
 
 </body>
-
 
 
 </html>
