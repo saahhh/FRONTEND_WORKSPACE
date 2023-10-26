@@ -9,7 +9,8 @@
         }
 
         header {
-            background-color: #6b5597b0;
+            /*background-color: #6b5597b0;*/
+            background: linear-gradient(rgb(55, 59, 117), lightgray);
             padding: 30px;
             text-align: center;
             font-size: 35px;
@@ -20,7 +21,7 @@
             float: left;
             width: 30%;
             height: 300px;
-            background: #f5a8ef;
+            background:linear-gradient(rgb(207, 207, 209), #af9cb6);
             padding: 20px;
         }
 
@@ -33,7 +34,7 @@
             float: left;
             padding: 20px;
             width: 70%;
-            background-color: #f1f1f1;
+            background-color: #d3d3d369;
             height: 300px;
         }
         /* section::after = section 블록이 끝난 후 정리해주는 설정*/
@@ -44,10 +45,10 @@
         }
 
         footer {
-            background-color: #cfff33;
+            background: linear-gradient(rgba(199, 197, 201, 0.425),rgba(87, 86, 86, 0.411));
             padding: 10px;
             text-align: center;
-            color: white;
+            color: rgb(0, 0, 0);
         }
         /* @media : 모바일버전으로 바꿔줌 */
         @media (max-width:600px){ /*화면크기 최대치*/
@@ -55,7 +56,9 @@
                 width: 100%;
                 height: auto;
             }
-
+        }
+        .reply{
+            background-color:rgb(168, 174, 202);
         }
     </style>
 </head>
@@ -64,6 +67,7 @@
     <p>안녕하세요. 여기는 블로그 메인입니다.</p>
     <header>
         <h2>Blog</h2>
+        <img src="dsfsddf.jpg" style="width: 300px; height: 300px;">
     </header>
     <section>
         <nav> <!--nav:목차 네비게이션-->
@@ -75,27 +79,44 @@
         </nav>
 
         <article> <!--article : 콘텐츠를 나타낼때 많이 쓰임-->
-            <h1>회사의 위대함</h1>
-            <p>우리 회사는 위대하고 위대한 회사이다.<br>
-            위대함이 하늘 부끄러움 없이 위대하다.</p>
-        </article>
-        
-        <article>
+            <h1>주쿵</h1>
+            <p>주먹밥쿵야<br>
+            쿵야는 위대하다.</p>
+         
+        <div class="comment">
             <p>댓글 작성</p>
-            <input type="text" placeholder="댓글 입력">
-            <button type="submit" id="">완료</button>
-            <button onclick="doneButton()"></button>
-
-        </article>
-        <script>
-                function doneButton(){
-                alert("댓글이 등록되었습니다.")
-            }
-        </script>
+            <input id="commentInput" placeholder="댓글 입력">
+            <button onclick="addComment()">완료</button>
+            <div id="comments"> 
+                
+            </div>
+        </div>
+    </article>
     </section> <!--section 구역 나누기 (중요함**)-->
     <footer>
-        <p>회사소개 | 연혁 | 오시는 길</p>
+        <p>쿵야소개 | 연혁 | 쿵야네 집</p>
     </footer>
 </body>
+<foot>
+    
+</foot>
+<script>
+    function addComment() {
+    const commentInput = document.getElementById("commentInput");
+    const commentText = commentInput.value;
+
+        if(commentText.trim() === ""){
+            alert("댓글을 작성해주세요.");
+            return;
+        }
+    const commentsBox = document.getElementById("comments");
+    const commentDIV = document.createElement("div");
+    commentDIV.className = "comment";
+    commentDIV.textContent = commentText;
+
+    commentsBox.appendChild(commentDIV);
+    commentInput.value="";
+}
+</script>
 
 </html>

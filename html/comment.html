@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>댓글쓰기</h1>
+        <div class="comment">
+            <input id="commentInput" placeholder="댓글 작성하기"> <!--디폴트 타입은 text-->
+            <button onclick="addComment()">작성완료</button>
+            <div id="comments">
+                <!--댓글이 표시될 장소-->
+
+            </div>
+        </div>
+    </body>
+    <foot></foot>
+    <script>
+        function addComment() {
+            const commentInput = document.getElementById("commentInput"); /*const commentInput에서 const는 commentInput 변수를 재사용할 수 없게 지정해주는 것, */
+            const commentText = commentInput.value; /*value : commentInput 값을 담는것 */
+
+            if(commentText.trim() === "") {
+                alert("댓글을 작성해주세요.");
+                return;
+            }
+            const commentsBox = document.getElementById("comments");
+
+            const commentDIV = document.createElement("div"); /*div태그가 붙은 요소를 만든다*/
+            commentDIV.className = "comment";
+            commentDIV.textContent = commentText;
+
+            commentsBox.appendChild(commentDIV); /*div가 부모라는 가정하에 자식을 넣겠다*/
+            commentInput.value="";
+        }
+    </script>
+</html>
+
