@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>블로그</title>
+    <meta charset="UTF-8">
+    <style>
+        * { /*  *{} : 전체 설정 바꿔서 정렬시키는 것 (크기 자동 조절해주는 기능)*/
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #6b5597b0;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        nav {
+            float: left;
+            width: 30%;
+            height: 300px;
+            background: #f5a8ef;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        article {
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: #f1f1f1;
+            height: 300px;
+        }
+        /* section::after = section 블록이 끝난 후 정리해주는 설정*/
+        section::after { 
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        footer {
+            background-color: #cfff33;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        /* @media : 모바일버전으로 바꿔줌 */
+        @media (max-width:600px){ /*화면크기 최대치*/
+            nav, article{
+                width: 100%;
+                height: auto;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <h2>블로그 메인</h2>
+    <p>안녕하세요. 여기는 블로그 메인입니다.</p>
+    <header>
+        <h2>Blog</h2>
+    </header>
+    <section>
+        <nav> <!--nav:목차 네비게이션-->
+            <ul>
+                <li>블로그소개</li>
+                <li>블로그설명</li>
+                <li>구독하기</li>
+            </ul>
+        </nav>
+
+        <article> <!--article : 콘텐츠를 나타낼때 많이 쓰임-->
+            <h1>회사의 위대함</h1>
+            <p>우리 회사는 위대하고 위대한 회사이다.<br>
+            위대함이 하늘 부끄러움 없이 위대하다.</p>
+        </article>
+        
+        <article>
+            <p>댓글 작성</p>
+            <input type="text" placeholder="댓글 입력">
+            <button type="submit" id="">완료</button>
+            <button onclick="doneButton()"></button>
+
+        </article>
+        <script>
+                function doneButton(){
+                alert("댓글이 등록되었습니다.")
+            }
+        </script>
+    </section> <!--section 구역 나누기 (중요함**)-->
+    <footer>
+        <p>회사소개 | 연혁 | 오시는 길</p>
+    </footer>
+</body>
+
+</html>
