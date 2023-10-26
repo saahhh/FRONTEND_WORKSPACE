@@ -1,0 +1,52 @@
+button{
+    background-color: #007bff;
+    color:#ffffff;
+    padding: 10px 20px; /*10px는 위아래, 20px는 좌우*/
+    cursor: pointer; /*커서를 포인트로 주면 마우스를 대면 손모양으로 바뀜*/
+    /*그림자를 추가해 효과주기*/
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    /*마우스를 대면(=호버 시) 색상과 반짝이는 효과 추가*/
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/*마우스 호버시(애니메이션효과) 스타일 변경*/ /*버튼과 다른 클래스로 만들어야함*/
+button:hover{
+    background-color: #0056b3;
+    box-shadow: 20px 20px 5px rgb(20 26 239/50%);
+}
+
+.container{
+    max-width: 800px; /*최대 크기, 더이상 늘어나지 않음*/
+    margin: 0 auto; /*가운데 너비 설정*/
+}
+
+h1{
+    text-align: center; /*텍스트 중간에 위치*/
+}
+.post{
+    background-color: #f5f5f5;
+    border: 1px solid #ccc; /*solid : 실선  dotted : 점선 dashed : 대시 double : 이중선 none = 테두리선 없음*/
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.post-list{
+    list-style-type: none; /*도트없애는것*/
+    padding: 0;
+}
+
+.post-list li{ /*li:태그이름에 공통적으로 넣어주겠다*/
+    margin: 0;
+    padding: 0;            
+}
+
+.form-container{
+    margin-top: 20px; /*머리에서부터 공간을 둔다*/
+}
+
+.form-container input[type="text"], /*동시에 쓰되 []안에 적용하고 싶은 타입을 적어줘야한다*/
+.form-container textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}

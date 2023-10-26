@@ -1,54 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        button{
-            background-color: #007bff;
-            color:#ffffff;
-            padding: 10px 20px; /*10px는 위아래, 20px는 좌우*/
-            cursor: pointer; /*커서를 포인트로 주면 마우스를 대면 손모양으로 바뀜*/
-            /*그림자를 추가해 효과주기*/
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-            /*마우스를 대면(=호버 시) 색상과 반짝이는 효과 추가*/
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-        /*마우스 호버시(애니메이션효과) 스타일 변경*/ /*버튼과 다른 클래스로 만들어야함*/
-        button:hover{
-            background-color: #0056b3;
-            box-shadow: 20px 20px 5px rgb(20 26 239/50%);
-        }
-        .container{
-            max-width: 800px; /*최대 크기, 더이상 늘어나지 않음*/
-            margin: 0 auto; /*가운데 너비 설정*/
-        }
-        h1{
-            text-align: center; /*텍스트 중간에 위치*/
-        }
-        
-
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <!-- ../ = 뒤에 있는 폴더부터 시작 ./ = 지금 내가 있는 위치 폴더부터 시작-->
+    <!-- <style> 파일시트 가져오기 : 자바의 import와 같은 것이 link
+    type = text/css타입-->
 </head>
 <body>
     <div class="container"> <!--class는 container박스는 하나다 라는 의미로 쓰임-->
         <h1>점심 게시판</h1>
 
-        <ul>
+        <ul class="post-list">
             <!--게시물 목록 작성하는 곳-->
-            <li>
+            <li class="post">
                 <h2>맥주창고 역삼점</h2>
                 <p>메뉴 더보기 <a href="https://www.instagram.com/lunch_mz/?hl=ko">클릭</a></p>
-                <li>
-                    <h2>명동칼국수 역삼점</h2>
-                    <p>명동칼국수 9000원</p>
-                </li>
+            </li>
+            <li class="post-list li">
+                <h2>명동칼국수 역삼점</h2>
+                <p>명동칼국수 9000원</p>
+            <li class="post">
+                <h2>신궁동 감자탕 역삼점</h2>
+                <p>뼈해장국 9000원</p>
+            </li>
             </li>
         </ul>
 
-        <div>
+        <div class="form-container">
             <!--메뉴 추가하는 추가란-->
             <h2>새 게시물 작성하기</h2>
-            <form>
+            <form class="post-form">
                 <input type="text" placeholder="제목">
                 <textarea placeholder="내용 작성하기"></textarea> <!--textarea는 상자가 늘어남-->
                 <button type="submit">작성완료</button>
@@ -60,7 +41,7 @@
     </div>
 
     <h2>새 게시글 작성</h2>
-    <button type="submit">작성완료</button>
+    <!--<button type="submit">작성완료</button>-->
 
 </body>
 
