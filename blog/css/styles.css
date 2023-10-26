@@ -29,3 +29,34 @@ margin : 가운데로 정렬한다 */
     background-color: #fff;
 }
 
+/*margin : , , , , 의 값이 들어가며 상하좌우*/
+form{
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+label{
+    display: block;
+    font-size: 20px;
+}
+
+input[type="text"], textarea{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+button[type="submit"]{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+

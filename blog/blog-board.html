@@ -44,13 +44,13 @@
                 postDiv.classList.add("post"); //classList :배열이기 때문에
                 postDiv.innerHTML = `
                     <h3>${title}</h3>
+                    <p>${content}</p>
+                    <p>게시일 : ${date.toLocaleString()}</p>
+                    
                     `;
                 posts.appendChild(postDiv);
             });
             
         </script>
     </body>
-    <foot>
-
-    </foot>
 </html>
