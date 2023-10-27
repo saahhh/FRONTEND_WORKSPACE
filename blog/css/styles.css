@@ -75,7 +75,7 @@ button[type="submit"]{
     cursor: pointer;
 }
 
-.delete-button{
+.delete-button {
     background-color: #ff5733;
     color: white;
     border: none;
