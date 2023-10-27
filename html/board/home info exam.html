@@ -99,11 +99,51 @@
             <input id="commentInput" placeholder="댓글 입력">
             <button onclick="addComment()">완료</button>
             <div id="comments"> 
-                
-            </div>
+        </div>
+        <br>
+        <div id ="visitorbook">
+            <h3>방명록</h3>
+            <!--<textarea id="visitorbook" placeholder="방명록 작성하기"></textarea>-->
+            <button id="saveButton">작성</button>
         </div>
     </article>
     </section> <!--section 구역 나누기 (중요함**)-->
+
+    <script>
+        const visitorbookList = document.getElementById("visitorbookList");
+        const savedVisitorbook = JSON.parse(localStorage.getItem("visitorbook")) || [];
+
+        savedVisitorbook.forEach(post => {
+            const listItem = document.createElement("li");
+            listItem.textContent = post.content;
+            visitorbookList.appendChild(listItem);
+        });
+        document.getElementById("saveButton").addEventListener("click", function(){
+            window.location.href="file:///C:/Users/user1/frontend_workspace/blog/blog_post.html";
+        });
+    </script>
+
+    <script>
+        document.getElementById("saveButton").addEventListener("click", function(){
+            if(visitorContent.trim !== ""){
+                const timeStamp = new Date().getTime();
+                const visitorbook = {
+                    id :timeStamp,
+                    content : visitorContent,
+                };
+
+                const savedVisitorbook = JSON.parse(localStorage.getItem("visitorbook")) || [];
+                savedVisitorbook.push(visitorbook);
+                localStorage.setItem("visitorbook", JSON.stringify(savedVisitorbook));
+
+                alert("방명록이 저장되었습니다.");
+                window.location.href="file:///C:/Users/user1/frontend_workspace/html/board/home%20info%20exam.html";
+            } else {
+                alert("게시글 내용을 입력하세요.");                
+            }
+        });
+    </script>
+
     <footer>
         <p>쿵야소개 | 연혁 | 쿵야네 집</p>
     </footer>
@@ -111,23 +151,22 @@
 <foot>
     
 </foot>
-<script>
-    function addComment() {
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value;
+    <script>
+        function addComment() {
+        const commentInput = document.getElementById("commentInput");
+        const commentText = commentInput.value;
 
-        if(commentText.trim() === ""){
-            alert("댓글을 작성해주세요.");
-            return;
-        }
-    const commentsBox = document.getElementById("comments");
-    const commentDIV = document.createElement("div");
-    commentDIV.className = "comment";
-    commentDIV.textContent = commentText;
+            if(commentText.trim() === ""){
+                alert("댓글을 작성해주세요.");
+                return;
+            }
+        const commentsBox = document.getElementById("comments");
+        const commentDIV = document.createElement("div");
+        commentDIV.className = "comment";
+        commentDIV.textContent = commentText;
 
-    commentsBox.appendChild(commentDIV);
-    commentInput.value="";
-}
-</script>
-
+        commentsBox.appendChild(commentDIV);
+        commentInput.value="";  
+    }
+    </script>
 </html>

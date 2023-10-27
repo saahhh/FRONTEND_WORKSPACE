@@ -43,10 +43,10 @@
                     listItem.textContent = `
                         ${item}(가격 : ${price}원) x ${quantity}: ${totalPrice}원
                     `;
-                    //$는 vlaue값을 가져오는 것
+                    //$는 vlaue값을 가져오는 것, ``(역따옴표)는 {변수명,표현식...}안의 값을 보겠다
                     totalPrice += totalPrice;
                     itemList.appendChild(listItem);
-
+                    
                     itemInput.value="";
                     priceInput.value=0;
                     quantityInput.value=1;
