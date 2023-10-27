@@ -50,9 +50,55 @@
                     <p>게시일 : ${date.toLocaleString()}</p>
 
                     `;
+
+                //삭제 버튼 생성
+                const deleteButton = document.createElement("button"); //delete버튼에 변수를 할당
+                deleteButton.classList.add("delete-button"); //dlelete 삭제키 생성
+                deleteButton.innerHTML = "삭제하기" //텍스트이름 삭제하기로 지정
+                deleteButton.addEventListener("click", () => { 
+                    postArray.splice(postArray.indexOf(post),1) //splice : 접착
+                    posts.removeChild(postDiv);
+                });
+
+                //댓글 폼 생성
+                const commentForm = document.createElement("form");
+                commentForm.innerHTML=`
+                    <input type="text" name="comment" placeholder="댓글 추가하기">
+                    <button type="submit">게시</button>
+                    `;
+                
+                commentForm.addEventListener("submit", function(event) { //이벤트를 전달받았을 때 실행하겠다
+                    event.preventDefault();
+                    const commentText = commentForm.comment.value;
+                    const comment = {
+                        text : commentText,
+                        date : new Date(),
+                    };
+
+                    post.commnets.push(comment);
+                    const commentDiv = document.createElement("div");
+                    commentDiv.classList.add("comment");
+                    commentDiv.innerHTML = `
+                        <p>${commentText}</p>
+                        <p>게시일 : ${comment.date.toLocaleString()}</p>
+                        `; //${commentText} : ${} 안에 텍스트를 넣어주는것
+
+                    //댓글 입력 초기화
+                    commentForm.comment.value = "";
+                    postDiv.appendChild(commentDiv);
+                });
+                
+                //생성해줘야 버튼이 보임
+                postDiv.appendChild(deleteButton);
+                postDiv.appendChild(commentForm); 
+                
+                //게시물 목록 추가
                 posts.appendChild(postDiv);
-            });
-            
+
+                //게시글 입력 초기화
+                postForm.title.value = "";
+                postForm.content.value = "";
+            });        
         </script>
     </body>
 </html>

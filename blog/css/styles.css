@@ -38,8 +38,13 @@ margin : 가운데로 정렬한다 */
     background-color: #fff;
 }
 
-/*margin : , , , , 의 값이 들어가며 상하좌우*/
 form{
+    /*
+      margin : 20px; 상 하 좌 우 모두 20px
+      margin : 20px 0; 상 하 20px 좌우0
+      margin : 10px 20px 30px 40px;
+                시계방향으로 위(10px), 오른쪽(20px), 아래(30px), 왼쪽(40px)
+    */
     margin: 20px 0;
     padding: 20px;
     background-color: #f9f9f9;
@@ -70,3 +75,10 @@ button[type="submit"]{
     cursor: pointer;
 }
 
+.delete-button{
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
