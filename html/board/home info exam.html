@@ -30,8 +30,8 @@
 
         nav {
             float: left;
-            width: 30%;
-            height: 300px;
+            width: 100%;
+            height: 100px;
             background:linear-gradient(rgb(207, 207, 209), #af9cb6);
             padding: 20px;
         }
@@ -44,7 +44,7 @@
         article {
             float: left;
             padding: 20px;
-            width: 70%;
+            width: 100%;
             background-color: #d3d3d369;
             height: 300px;
         }
@@ -81,17 +81,50 @@
             padding: 3px;
             margin-bottom: 10px;
        }
+
+        audio{
+            display: block;
+            margin: 0 atuo;
+            max-width: 80%;
+            border: 2px solid #a57fa5;
+            border-radius: 30px;
+            background-color: #a57fa5;
+            box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: #a57fa5;
+            border-radius: 8px;
+        }
+        audio::-webkit-media-controls-play-button{
+            background-color: #fff;
+            border: 2px solid #a57fa5;
+            border-radius: 50%;
+            width: 10px;
+            height: 30px;
+        }
+
         /*
       margin : 20px; 상 하 좌 우 모두 20px
       margin : 20px 0; 상 하 20px 좌우0
       margin : 10px 20px 30px 40px;
                 시계방향으로 위(10px), 오른쪽(20px), 아래(30px), 왼쪽(40px)
-    */
+        */
     </style>
 </head>
 <body>
     <h2>블로그 메인</h2>
     <p>안녕하세요. 여기는 블로그 메인입니다.</p>
+
+    <h4>노래재생</h4>
+    <audio id = "myAudio" controls>
+        <source src="./mp3/titanium-170190.mp3" type="audio/mpeg">
+    </audio>
+
+    <script> //자동 재생을 위한 js코드
+        const audio = document.getElementById('myAudio');
+        audio.play();
+    </script><br>
+
     <header>
         <h2>Blog</h2>
         <img src="dsfsddf.jpg" style="width: 300px; height: 300px;">
@@ -125,6 +158,7 @@
     </article>
     </section> <!--section 구역 나누기 (중요함**)-->
 
+    <section>
     <script>
         const visitorbookList = document.getElementById("visitorbookList");
         const savedVisitorbook = JSON.parse(localStorage.getItem("visitorbook")) || [];
@@ -159,10 +193,78 @@
             }
         });
     </script>
+    </section>
 
+    <section>
+    <article>
+    <div id="post-form">
+        <h3>팝업 게시글 목록</h3>
+        <ul id="post-list"></ul>
+        <h4>팝업 게시글 작성</h4>
+        <button id="add-post">팝업 게시글 작성</button>
+    </div>
+
+    <script>
+        function displayPosts() {
+            const postList = document.getElementById('post-list');
+            postList.innerHTML = '';
+            for(let i = 0; i<localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if(key.startsWith('post-')){
+                    const post = JSON.parse(localStorage.getItem(key));
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<a href="#" data-key=key="${key}">${post.title}</a>`;
+                    postList.appendChild(listItem);
+                }
+            }
+            const postLinks = document.querySelectorAll('#post-list a');
+            postLinks.forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const key = link.getAttribute('data-key');
+                    const post = JSON.parse(localStorage.getItem(key));
+
+                    const popupWindow = window.open('','','width=400,height=400');
+                    popupWindow.document.write(`<h2>${post.title}</h2>`);
+                    popupWindow.document.write(`<p>${post.content}</p>`);
+                });
+            });
+        }
+
+        document.getElementById('add-post').addEventListener('click', () => {
+            const popupWindow = window.open('','','width=400, height=400');
+            const popupDocument = popupWindow.document;
+            
+            popupDocument.write('<h2>게시글 작성</h2>');
+            popupDocument.write('<input type="text" id="post-title" placeholder="제목">');
+            popupDocument.write('<textarea id="post-content" placeholer="내용"></textarea>');
+            popupDocument.write('<button id="save-post">저장</button>');
+
+            popupDocument.getElementById('save-post').addEventListener('click', () => {
+                const title = popupDocument.getElementById('post-title').value;
+                const content = popupDocument.getElementById('post-content').value;
+
+                if(title&&content) {
+                    const postKey = `post-${Date.now()}`;
+                    const post = {title, content};
+                    localStorage.setItem(postKey, JSON.stringify(post));
+                    displayPosts();
+                    popupWindow.close();
+                }
+            });
+        });
+        displayPosts();
+        
+    </script>
+    </article>
+    </section>
+
+
+    <section>
     <footer>
         <p>쿵야소개 | 연혁 | 쿵야네 집</p>
     </footer>
+    </section>
 </body>
 <foot>
     

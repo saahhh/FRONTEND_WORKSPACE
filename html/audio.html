@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뮤직 카운트</title>
+    </head>
+    <style>
+        audio{
+            display: block;
+            margin: 0 atuo;
+            max-width: 80%;
+            border: 2px solid #f08080;
+            border-radius: 30px;
+            background-color: #f08080;
+            box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: #f08080;
+            border-radius: 8px;
+        }
+
+        audio::-webkit-media-controls-play-button{
+            background-color: #fff;
+            border: 2px solid #f08080;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+        }
+
+    </style>
+    <body>
+        <h1>노래재생</h1>
+        <audio id="myAudio" controls autoplay>
+            <!--controls : 제어를 할 수 있다
+                type="audio/mpeg" : mp3형식으로받아들이겠다-->
+            <source src="./mp3/titanium-170190.mp3" type="audio/mpeg">
+        </audio>
+
+        <script>
+            //자동 재생을 위한 JS코드
+            const audio = document.getElementById('myAudio');
+            audio.play();
+        </script>
+    </body>
+</html>
