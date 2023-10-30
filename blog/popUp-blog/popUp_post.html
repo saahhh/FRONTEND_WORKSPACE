@@ -24,14 +24,14 @@
                 postList.innerHTML = '';
 
                 //localStorage 안에 저장된 항목 수 만큼 반복해서 저장소에 있는 내용을 차례대로 나열하는 for문 작성
-                for(let i = 0; localStorage.length; i++) { 
+                for(let i = 0; i < localStorage.length; i++) { 
                     const key = localStorage.key(i); //localStorage.key(i) : localStorage에서 저장된 항목 중에서 'i'번째 항목인 key(키:이름)을 가져온다, key(키:이름)은 데이터를 식별하는 역할이다 
                                                     //ex) name(key값) = "kh"(value값)
-                    if(key.startsWith('post-')){ //startsWith : 현재 진행중인 localStroage의 key(이름)이 post-라는 이름으로 시작하는지 확인하는 명령어
+                    if(key.startsWith('post-')) { //startsWith : 현재 진행중인 localStroage의 key(이름)이 post-라는 이름으로 시작하는지 확인하는 명령어
                                                 //post-로 시작하는 키를 가진 항목의 게시물 데이터를 가져오기 위해 설정한 것
                         const post = JSON.parse(localStorage.getItem(key)); //ket값의 item을 가져온다, post-로 시작하는 key를 가진 항목의 값을 가져와서 JSON 문자열을 javascript객체로 가져와서 게시물의 데이터를 나타낸다.
                         const listItem = document.createElement('li');
-                        listItem.innerHTML = `<a href="#" data-key=${key}>${post.title}</a>`; //그대로 돌아가는 명령어 : #
+                        listItem.innerHTML = `<a href="#" data-key="${key}">${post.title}</a>`; //그대로 돌아가는 명령어 : #
                         postList.appendChild(listItem);
 
                     }
@@ -81,7 +81,7 @@
                 //게시글 작성 양식 추가
                 popupDocument.write('<h2>게시글 작성</h2>');
                 popupDocument.write('<input type="text" id="post-title" placeholder="제목"><br>'); 
-                popupDocument.write('<textarea id="post-content" placeholder="내용"></textarea>');
+                popupDocument.write('<textarea id="post-content" placeholder="내용"></textarea><br>');
                 popupDocument.write('<button id="save-post">저장</button>');
                 
                 //저장 버튼을 클릭하면 새로운 게시물을 저장하고 목록을 갱신
