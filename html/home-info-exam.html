@@ -3,113 +3,7 @@
 <head>
     <title>블로그</title>
     <meta charset="UTF-8">
-    <style>
-        * { /*  *{} : 전체 설정 바꿔서 정렬시키는 것 (크기 자동 조절해주는 기능)*/
-            box-sizing: border-box;
-        }
-
-        @font-face {
-        font-family: 'omyu_pretty';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-        }
-
-        body {
-            font-family: 'omyu_pretty';
-        }
-
-        header {
-            /*background-color: #6b5597b0;*/
-            background: linear-gradient(rgb(55, 59, 117), lightgray);
-            padding: 30px;
-            text-align: center;
-            font-size: 35px;
-            color: white;
-        }
-
-        nav {
-            float: left;
-            width: 100%;
-            height: 100px;
-            background:linear-gradient(rgb(207, 207, 209), #af9cb6);
-            padding: 20px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        article {
-            float: left;
-            padding: 20px;
-            width: 100%;
-            background-color: #d3d3d369;
-            height: 300px;
-        }
-        /* section::after = section 블록이 끝난 후 정리해주는 설정*/
-        section::after { 
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        footer {
-            background: linear-gradient(rgba(199, 197, 201, 0.425),rgba(87, 86, 86, 0.411));
-            padding: 10px;
-            text-align: center;
-            color: rgb(0, 0, 0);
-        }
-        /* @media : 모바일버전으로 바꿔줌 */
-        @media (max-width:600px){ /*화면크기 최대치*/
-            nav, article{
-                width: 100%;
-                height: auto;
-            }
-        }
-        .reply{
-            background-color:rgb(168, 174, 202);
-        }
-
-        button{
-            background-color: mediumpurple;
-            font-family: 'omyu_pretty';
-            color: white;
-            font-size: 15px;
-            border: none;
-            padding: 3px;
-            margin-bottom: 10px;
-       }
-
-        audio{
-            display: block;
-            margin: 0 atuo;
-            max-width: 80%;
-            border: 2px solid #a57fa5;
-            border-radius: 30px;
-            background-color: #a57fa5;
-            box-shadow: 0 0 10px rgba(0,0,0, 0.3);
-        }
-        audio::-webkit-media-controls-panel {
-            background-color: #a57fa5;
-            border-radius: 8px;
-        }
-        audio::-webkit-media-controls-play-button{
-            background-color: #fff;
-            border: 2px solid #a57fa5;
-            border-radius: 50%;
-            width: 10px;
-            height: 30px;
-        }
-
-        /*
-      margin : 20px; 상 하 좌 우 모두 20px
-      margin : 20px 0; 상 하 20px 좌우0
-      margin : 10px 20px 30px 40px;
-                시계방향으로 위(10px), 오른쪽(20px), 아래(30px), 왼쪽(40px)
-        */
-    </style>
+    <link rel="stylesheet" href="./css/homeexam.css">
 </head>
 <body>
     <h2>블로그 메인</h2>
@@ -127,7 +21,7 @@
 
     <header>
         <h2>Blog</h2>
-        <img src="dsfsddf.jpg" style="width: 300px; height: 300px;">
+        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;">
     </header>
     <section>
         <nav> <!--nav:목차 네비게이션-->
@@ -257,18 +151,6 @@
         
     </script>
     </article>
-    </section>
-
-
-    <section>
-    <footer>
-        <p>쿵야소개 | 연혁 | 쿵야네 집</p>
-    </footer>
-    </section>
-</body>
-<foot>
-    
-</foot>
     <script>
         function addComment() {
         const commentInput = document.getElementById("commentInput");
@@ -287,4 +169,88 @@
         commentInput.value="";  
     }
     </script>
+    </section>
+
+    <section>
+    <article>
+    <h3>pagination</h3>
+    <div id="pagination">
+        <button id="prevPage">이전</button>
+        <div class="img-container">
+
+        </div>
+        <button id ="nextPage">다음</button>
+    </div>
+    <script>
+        const images = [
+            './Pagination/img/cute1.jpeg',
+            './Pagination/img/cute2.jpg',
+            './Pagination/img/cute3.jpg',
+            './Pagination/img/cute4.jpg',
+            './Pagination/img/cute5.png',
+        ];
+
+        const imagesPerpage = 2;
+        let currentPage = 0;
+
+        const imageContanier = document.querySelector('.img-contaioner');
+        const prevButton = document.getElementById('prevPage');
+        const nextButton = document.getElementById('nextPage');
+
+        function displayImg(page) {
+            const startIndex = page * imagesPerpage;
+            const endIndex = startIndex + imagesPerpage;
+
+            const pageImages = images.slice(startIndex, endIndex);
+            
+            imageContanier.innerHTML ='';
+
+            pageImages.foreach(images => {
+                const imgElement = document.createElement('img');
+
+                imgElement.src = images;
+                imgElement.classList.add('image');
+                imageContanier.appendChild(imgElement);
+            });
+
+        }
+
+            function updateButtons() {
+                prevButton.disabled = currentPage === 0;
+                nextButton.disabled = (currentPage + 1) * imagesPerpage >= images.length;
+            }
+
+            prevButton.addEventListener('click', () => {
+                if(currentPage > 0) {
+                    currentPage --;
+                    displayImg(currentPage);
+                    updateButtons();
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if((currentPage + 1) * imagesPerpage < images.length){
+                    currentPage ++;
+                    displayImg(currentPage);
+                    updateButtons();
+                }
+            });
+
+            displayImg(currentPage);
+            updateButtons();
+    </script>
+    </article>
+    </section>
+
+
+    <section>
+    <footer>
+        <p>쿵야소개 | 연혁 | 쿵야네 집</p>
+    </footer>
+    </section>
+</body>
+<foot>
+    
+</foot>
+
 </html>
