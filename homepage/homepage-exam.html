@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>블로그</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/homepagestyles.css">
+</head>
+<body>
+    <h2>블로그 메인</h2>
+    <p>안녕하세요. 여기는 블로그 메인입니다.</p>
+
+    <h4>노래재생</h4>
+    <audio id = "myAudio" controls>
+        <source src="./mp3/titanium-170190.mp3" type="audio/mpeg">
+    </audio>
+
+    <script> //자동 재생을 위한 js코드
+        const audio = document.getElementById('myAudio');
+        audio.play();
+    </script><br>
+
+    <header>
+        <h2>Blog</h2>
+        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;">
+    </header>
+    <section>
+        <nav> <!--nav:목차 네비게이션-->
+            <ul>
+                <a a href="./pictures.html">쿵야사진</a></li>
+                <li>블로그설명</li>
+                <li>구독하기</li>
+            </ul>
+        </nav>
+
+        <article> <!--article : 콘텐츠를 나타낼때 많이 쓰임-->
+            <h3></h3>
+            <p><br>
+            쿵야는 위대하다.</p>
+         
+        <div class="comment">
+            <p>댓글 작성</p>
+            <input id="commentInput" placeholder="댓글 입력">
+            <button onclick="addComment()">완료</button>
+            <div id="comments"> 
+        </div>
+        <br>
+        <div id ="visitorbook">
+            <h3>방명록</h3>
+            <!--<textarea id="visitorbook" placeholder="방명록 작성하기"></textarea>-->
+            <button id="saveButton">작성</button>
+        </div>
+    </article>
+    </section> <!--section 구역 나누기 (중요함**)-->
+
+    <section>
+    <script>
+        const visitorbookList = document.getElementById("visitorbookList");
+        const savedVisitorbook = JSON.parse(localStorage.getItem("visitorbook")) || [];
+
+        savedVisitorbook.forEach(post => {
+            const listItem = document.createElement("li");
+            listItem.textContent = post.content;
+            visitorbookList.appendChild(listItem);
+        });
+        document.getElementById("saveButton").addEventListener("click", function(){
+            window.location.href="file:///C:/Users/user1/frontend_workspace/blog/blog_post.html";
+        });
+    </script>
+
+    <script>
+        document.getElementById("saveButton").addEventListener("click", function(){
+            if(visitorContent.trim !== ""){
+                const timeStamp = new Date().getTime();
+                const visitorbook = {
+                    id :timeStamp,
+                    content : visitorContent,
+                };
+
+                const savedVisitorbook = JSON.parse(localStorage.getItem("visitorbook")) || [];
+                savedVisitorbook.push(visitorbook);
+                localStorage.setItem("visitorbook", JSON.stringify(savedVisitorbook));
+
+                alert("방명록이 저장되었습니다.");
+                window.location.href="file:///C:/Users/user1/frontend_workspace/html/board/home%20info%20exam.html";
+            } else {
+                alert("게시글 내용을 입력하세요.");                
+            }
+        });
+    </script>
+    </section>
+
+    <section>
+    <article>
+    <div id="post-form">
+        <h3>팝업 게시글 목록</h3>
+        <ul id="post-list"></ul>
+        <h4>팝업 게시글 작성</h4>
+        <button id="add-post">팝업 게시글 작성</button>
+    </div>
+
+    <script>
+        function displayPosts() {
+            const postList = document.getElementById('post-list');
+            postList.innerHTML = '';
+            for(let i = 0; i<localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if(key.startsWith('post-')){
+                    const post = JSON.parse(localStorage.getItem(key));
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<a href="#" data-key=key="${key}">${post.title}</a>`;
+                    postList.appendChild(listItem);
+                }
+            }
+            const postLinks = document.querySelectorAll('#post-list a');
+            postLinks.forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const key = link.getAttribute('data-key');
+                    const post = JSON.parse(localStorage.getItem(key));
+
+                    const popupWindow = window.open('','','width=400,height=400');
+                    popupWindow.document.write(`<h2>${post.title}</h2>`);
+                    popupWindow.document.write(`<p>${post.content}</p>`);
+                });
+            });
+        }
+
+        document.getElementById('add-post').addEventListener('click', () => {
+            const popupWindow = window.open('','','width=400, height=400');
+            const popupDocument = popupWindow.document;
+            
+            popupDocument.write('<h2>게시글 작성</h2>');
+            popupDocument.write('<input type="text" id="post-title" placeholder="제목">');
+            popupDocument.write('<textarea id="post-content" placeholer="내용"></textarea>');
+            popupDocument.write('<button id="save-post">저장</button>');
+
+            popupDocument.getElementById('save-post').addEventListener('click', () => {
+                const title = popupDocument.getElementById('post-title').value;
+                const content = popupDocument.getElementById('post-content').value;
+
+                if(title&&content) {
+                    const postKey = `post-${Date.now()}`;
+                    const post = {title, content};
+                    localStorage.setItem(postKey, JSON.stringify(post));
+                    displayPosts();
+                    popupWindow.close();
+                }
+            });
+        });
+        displayPosts();
+        
+    </script>
+    </article>
+    <script>
+        function addComment() {
+        const commentInput = document.getElementById("commentInput");
+        const commentText = commentInput.value;
+
+            if(commentText.trim() === ""){
+                alert("댓글을 작성해주세요.");
+                return;
+            }
+        const commentsBox = document.getElementById("comments");
+        const commentDIV = document.createElement("div");
+        commentDIV.className = "comment";
+        commentDIV.textContent = commentText;
+
+        commentsBox.appendChild(commentDIV);
+        commentInput.value="";  
+    }
+    </script>
+    </section>
+
+    <section>
+    <article>
+    <h3>pagination</h3>
+    <div id="pagination">
+        <button id="prevPage">이전</button>
+        <button id="nextPage">다음</button>
+        <div class="img-container">
+
+        </div>
+        
+    </div>
+    <script>
+        const images = [
+           './img/img/cute1.jpeg',
+           './img/img/cute2.jpg',
+           './img/img/cute3.jpg',
+           './img/img/cute4.jpg',
+           './img/img/cute5.png',
+           './img/img/cute6.jpg',
+        ];
+
+        const imagesPerpage = 2;
+        let currentPage = 0;
+
+        const imageContanier = document.querySelector('.img-container');
+        const prevButton = document.getElementById('prevPage');
+        const nextButton = document.getElementById('nextPage');
+
+        function displayImg(page) {
+            const startIndex = page * imagesPerpage;
+            const endIndex = startIndex + imagesPerpage;
+
+            const pageImages = images.slice(startIndex, endIndex);
+            
+            imageContanier.innerHTML ='';
+
+            pageImages.forEach( images => {
+                const imgElement = document.createElement('img');
+
+                imgElement.src = images;
+                imgElement.classList.add('image');
+                imageContanier.appendChild(imgElement);
+            });
+
+        }
+
+            function updateButtons() {
+                prevButton.disabled = currentPage === 0;
+                nextButton.disabled = (currentPage + 1) * imagesPerpage >= images.length;
+            }
+
+            prevButton.addEventListener('click', () => {
+                if(currentPage > 0) {
+                    currentPage --;
+                    displayImg(currentPage);
+                    updateButtons();
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if((currentPage + 1) * imagesPerpage < images.length){
+                    currentPage ++;
+                    displayImg(currentPage);
+                    updateButtons();
+                }
+            });
+
+            displayImg(currentPage);
+            updateButtons();
+    </script>
+    </article>
+    </section>
+
+
+    <section>
+    <footer>
+        <p>쿵야소개 | 쿵야네 집</p>
+    </footer>
+    </section>
+</body>
+<foot>
+    
+</foot>
+
+</html>
