@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/homepagestyles.css">
+    </head> 
+<body>
+    <header>
+    <div>
+        <h2>Blog</h2>
+        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;">
+        <br>
+        <button-b type="button" onclick="location.href='./homepage-exam.html'">돌아가기</button-b>
+    </div>
+    <div id="post-form">
+        <h5>팝업 게시글 목록</h5>
+        <ul id="post-list"></ul>
+        <h6>팝업 게시글 작성</h6>
+        <button-a id="add-post">팝업 게시글 작성</button-a>
+    </div>
+
+    <script>
+        function displayPosts() {
+            const postList = document.getElementById('post-list');
+            postList.innerHTML = '';
+            for(let i = 0; i<localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if(key.startsWith('post-')){
+                    const post = JSON.parse(localStorage.getItem(key));
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<a href="#" data-key=key="${key}">${post.title}</a>`;
+                    postList.appendChild(listItem);
+                }
+            }
+            const postLinks = document.querySelectorAll('#post-list a');
+            postLinks.forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const key = link.getAttribute('data-key');
+                    const post = JSON.parse(localStorage.getItem(key));
+
+                    const popupWindow = window.open('','','width=400,height=400');
+                    popupWindow.document.write(`<h2>${post.title}</h2>`);
+                    popupWindow.document.write(`<p>${post.content}</p>`);
+                });
+            });
+        }
+
+        document.getElementById('add-post').addEventListener('click', () => {
+            const popupWindow = window.open('','','width=400, height=400');
+            const popupDocument = popupWindow.document;
+            
+            popupDocument.write('<h2>게시글 작성</h2>');
+            popupDocument.write('<input type="text" id="post-title" placeholder="제목">');
+            popupDocument.write('<textarea id="post-content" placeholer="내용"></textarea>');
+            popupDocument.write('<button id="save-post">저장</button>');
+
+            popupDocument.getElementById('save-post').addEventListener('click', () => {
+                const title = popupDocument.getElementById('post-title').value;
+                const content = popupDocument.getElementById('post-content').value;
+
+                if(title&&content) {
+                    const postKey = `post-${Date.now()}`;
+                    const post = {title, content};
+                    localStorage.setItem(postKey, JSON.stringify(post));
+                    displayPosts();
+                    popupWindow.close();
+                }
+            });
+        });
+        displayPosts();
+        
+    </script>
+    </header>

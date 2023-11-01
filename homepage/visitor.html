@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/homepagestyles.css">
+    </head> 
+<body>
+    <header>
+    <div>
+        <h2>Blog</h2>
+        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;">
+        <br>
+        <button-b type="button" onclick="location.href='./homepage-exam.html'">돌아가기</button-b>
+        <!--<button type="button" onclick="location.href='./pictures.html'">쿵야사진</button>-->
+            
+        
+        <div id ="visitorbook">
+            <!--<textarea id="visitorbook" placeholder="방명록 작성하기"></textarea>-->
+            <h6>방명록</h6>
+            <button-a id="saveButton">작성</button-a>
+        </div>
+
+    <script>
+        const visitorbookList = document.getElementById("visitorbookList");
+        const savedVisitorbook = JSON.parse(localStorage.getItem("visitorbook")) || [];
+    
+        savedVisitorbook.forEach(post => {
+            const listItem = document.createElement("li");
+            listItem.textContent = post.content;
+            visitorbookList.appendChild(listItem);
+        });
+        document.getElementById("saveButton").addEventListener("click", function(){
+            window.location.href="file:///C:/Users/user1/frontend_workspace/blog/blog_post.html";
+        });
+    </script>
+
+    <script>
+        document.getElementById("saveButton").addEventListener("click", function() {
+            const blogPostContent = document.getElementById("blogPost").value;
+            if(visitorContent.trim !== ""){
+                const timeStamp = new Date().getTime();
+                const visitorbook = {
+                    id :timeStamp,
+                    content : visitorContent,
+                };
+    
+                const savedVisitorbook = JSON.parse(localStorage.getItem("visitorbook")) || [];
+                savedVisitorbook.push(visitorbook);
+                localStorage.setItem("visitorbook", JSON.stringify(savedVisitorbook));
+    
+                alert("방명록이 저장되었습니다.");
+                window.location.href="file:///C:/Users/user1/frontend_workspace/html/board/home%20info%20exam.html";
+            } else {
+                alert("게시글 내용을 입력하세요.");                
+            }
+        });
+    </script>
+    </div>
+    </header>
+    </body>
+</html>

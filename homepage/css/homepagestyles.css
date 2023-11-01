@@ -20,12 +20,13 @@ header {
     text-align: center;
     font-size: 35px;
     color: white;
+    height: 1500px;
 }
 
 nav {
     float: left;
     width: 100%;
-    height: 150px;
+    height: 200px;
     background:linear-gradient(rgb(207, 207, 209), #af9cb6);
     padding: 20px;
 }
@@ -67,15 +68,41 @@ footer {
 }
 
 button{
-    background-color: mediumpurple;
+    background-color: rgb(133, 113, 173);
+    font-family: 'omyu_pretty';
+    color: white;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0.2em rgba(56, 0, 80, 0.884);
+}
+
+button-a{
+    background-color: rgb(133, 113, 173);
     font-family: 'omyu_pretty';
     color: white;
     font-size: 15px;
     border: none;
-    padding: 3px;
-    margin-bottom: 10px;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0.2em rgba(56, 0, 80, 0.884);
 }
 
+button-b{
+    background-color: rgb(133, 113, 173);
+    font-family: 'omyu_pretty';
+    color: white;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0.2em rgba(56, 0, 80, 0.884);
+
+}
     /*
     margin : 20px; 상 하 좌 우 모두 20px
     margin : 20px 0; 상 하 20px 좌우0
@@ -84,22 +111,23 @@ button{
     */
 
 audio{
-    display: block;
+    display: n;
     margin: 0 atuo;
     max-width: 300px;
-    max-height: 20px;
-    border: 2px solid #a57fa5;
+    max-height: 100px;
+    border: 2px solid rgb(133, 113, 173);
     border-radius: 30px;
-    background-color: #a57fa5;
-    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+    background-color: rgb(133, 113, 173);
+    box-shadow: 0 0 10px rgba(56, 0, 80, 0.5);
+
 }
     audio::-webkit-media-controls-panel {
-    background-color: #a57fa5;
+    background-color: rgb(133, 113, 173);
     border-radius: 8px;
 }
     audio::-webkit-media-controls-play-button{
     background-color: #fff;
-    border: 2px solid #a57fa5;
+    border: 2px solid rgb(133, 113, 173);
     border-radius: 50%;
     width: 10px;
     height: 30px;
@@ -114,4 +142,13 @@ audio{
     width: 300px;
     height:300px;
     margin: 10px;
+}
+
+.container {
+    background: linear-gradient(rgb(55, 59, 117), lightgray);
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    height: 1000px;
 }

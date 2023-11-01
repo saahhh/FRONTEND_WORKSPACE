@@ -8,22 +8,16 @@
 <body>
     <header>
         <h2>Blog</h2>
-        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;">
-    </header>
-    <section>
-        <nav> <!--nav:목차 네비게이션-->
-            <ul>
-                <a a href="./homepage-exam.html">돌아가기</a></li>
-            </ul>
-        </nav>
-        <section>
-            <article>
-            <h3>쿵야사진</h3>
-            <div id="pagination">
+        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;"><br>
+            <button type="button" onclick="location.href='./homepage-exam.html'">돌아가기</button>
+            <!--<button type="button" onclick="location.href='./pictures.html'">쿵야사진</button>-->
+     
+      
+            <h5>쿵야사진</h5>
+            <div>
                 <button id="prevPage">이전</button>
                 <button id ="nextPage">다음</button>
                 <div class="img-container">
-                    
                 </div>
                 
             </div>
@@ -114,19 +108,39 @@
             displayImg(currentPage);
             updateButtons();
             </script>
-            </article>
+
             </section>
         
          
-        <div class="comment">
-            <p>댓글 작성</p>
+        <div>
+            <h6>댓글 작성</h6>
             <input id="commentInput" placeholder="댓글 입력">
             <button onclick="addComment()">완료</button>
             <div id="comments"> 
         </div>
         <br>
-    </article>
-    </section> <!--section 구역 나누기 (중요함**)-->
+            
+        <section> 
+            <script>
+                function addComment() {
+                const commentInput = document.getElementById("commentInput");
+                const commentText = commentInput.value;
 
-</body>
+                    if(commentText.trim() === ""){
+                        alert("댓글을 작성해주세요.");
+                        return;
+                    }
+                const commentsBox = document.getElementById("comments");
+                const commentDIV = document.createElement("div");
+                commentDIV.className = "comment";
+                commentDIV.textContent = commentText;
+
+                commentsBox.appendChild(commentDIV);
+                commentInput.value="";  
+            }
+            </script>
+        </section>
+
+    </body>
+</header>
 </html>
