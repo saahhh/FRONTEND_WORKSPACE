@@ -11,7 +11,7 @@
                 만약에 png 파일만 허용하고 싶다면 accept="imange/png"-->
         <input type="file" id="fileInput" accept="image/*"> <!--accept : 이미지허용한다-->
         <button id="uploadButton">업로드</button>
-        <div id="imageContanier">
+        <div id="imageContainer">
             <!--이미지를 표시할 컨테이너-->
             <img id="uploadImage" style="max-width: 50%;">
         </div>
@@ -20,7 +20,7 @@
             document.getElementById("uploadButton").addEventListener("click", function() {
                 var fileInput = document.getElementById("fileInput");
                 var loadImage = document.getElementById("uploadImage");
-                var imageContanier = document.getElementById("imageContainer");
+                var imageContainer = document.getElementById("imageContainer");
 
                 //만약에 파일이 존재한다면 이미지를 보여주겠다
                 /*
