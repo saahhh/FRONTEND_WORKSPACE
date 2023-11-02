@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>물건 계산하기</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/homepagestyles.css">
+</head>
+    <header>
+        <h2>Blog</h2>
+        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;"><br>
+            <button type="button" onclick="location.href='./homepage-exam.html'">돌아가기</button>
+    <body>
+        <p>
+        <nav>
+            <label for="item">상품명 : </label>
+            <input type="text" id="item" placeholder="물건 이름"><br>
+            <label for="price">가격 : </label>
+            <input type="number" id="price" placeholder="가격" value="0"><br>
+            <label for="count">갯수 : </label>
+            <input type="number" id="count" placeholder="갯수" value="1"><br><br>
+            <button-a onclick="addItem()">추가</button-a>
+        </nav>
+        </p>
+
+        <nav>
+            <nav id="itemList"></nav>
+            <!--추가한 목록 나열-->
+        </nav>
+        <nav>   
+            <p>총 가격 : <span id="totalPrice"> 0 </span> 원</p>
+        </nav>
+
+        <script>
+            let total = 0;
+
+            function addItem() {
+                const itemInput = document.getElementById("item");
+                const priceInput = document.getElementById("price");
+                const countInput = document.getElementById("count");
+                const itemList = document.getElementById("itemList");
+                const totalPrice = document.getAnimations("totalPrice");
+
+                const itemValue = itemInput.value;
+                const priceValue = priceInput.value;
+                const countValue = countInput.value;
+
+                const totalPriceCount = priceValue * countValue;
+
+                const listItem = document.createElement("li");
+
+                listItem.textContent = `${itemValue} | 가격 : ${priceValue} 원 X ${countValue} = ${totalPriceCount} 원`;
+                itemList.appendChild(listItem);
+
+                total += totalPriceCount
+                totalPrice.textContent = total;
+
+                itemInput.value = "";
+                priceInput.value = "0";
+                countInput.value = "1";
+            }
+        </script>
+    </body>
+</html>

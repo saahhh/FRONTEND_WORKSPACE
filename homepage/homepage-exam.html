@@ -7,6 +7,31 @@
 </head>
 <body>
     <header><br>
+      
+    <div id="outer">
+        <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 22px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 35px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 30px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 25px">❆</div>
+        <div class="snowflake" style="font-size: 16px">❆</div>
+        <div class="snowflake" style="font-size: 22px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 10px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 18px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 17px">❆</div>
+        <div class="snowflake" style="font-size: 25px">❆</div>
+        <div class="snowflake" style="font-size: 12px">❆</div>
+        <div class="snowflake" style="font-size: 24px">❆</div>
+    </div>
+
         <h2>Blog</h2>
         <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;">
 
@@ -26,6 +51,8 @@
                 <button type="button" onclick="location.href='./img-upload.html'">이미지 업로드</button>
                 <button type="button" onclick="location.href='./pagination.html'">pagination</button>
                 <button type="button" onclick="location.href='./visitor.html'">방명록</button>
+                <button type="button" onclick="location.href='./calculator.html'">계산기</button>
+
             </ul>
 
     <section>
@@ -48,32 +75,9 @@
         commentInput.value="";  
     }
     </script>
+   
 
-        <div id="outer">
-            <div class="snowflakes" aria-hidden="true">
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 22px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 35px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 30px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 25px">❆</div>
-            <div class="snowflake" style="font-size: 16px">❆</div>
-            <div class="snowflake" style="font-size: 22px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 10px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 18px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 17px">❆</div>
-            <div class="snowflake" style="font-size: 25px">❆</div>
-            <div class="snowflake" style="font-size: 12px">❆</div>
-            <div class="snowflake" style="font-size: 24px">❆</div>
-            </div>
-        </div>
-        <script>
+  <script>
         $(document).ready(function() {
         var snowCount = 200; // 원하는 눈의 개수를 설정
         for (var i = 0; i < snowCount; i++) {
@@ -93,8 +97,8 @@
             snowElement.style.setProperty('--snow-color', getRandomColor());
         }
         });
-        </script>
-        </section>
+  </script>
+
 
 </header>
 </body>
