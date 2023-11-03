@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/homepagestyles.css">
+    
+    <header>
+        <h2>Blog</h2>
+        <img src="./img/dsfsddf.jpg" style="width: 300px; height: 300px;"><br>
+            <button type="button" onclick="location.href='./homepageMain.html'">돌아가기</button>
+
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script>
+            $(function() {
+                $("button").on("click", function(){
+                    $("img[alt=ddd1]").attr("src", "./img/img/ddd5.jpg");
+                    $("img[alt=ddd2]").attr("src", "./img/img/ddd3.jpg");
+                });
+            });
+        </script>
+        <style>
+            img {
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <button>눌러봐</button><br><br>
+        <img src="./img/img/ddd1.png" alt="ddd1">
+        <img src="./img/img/ddd2.jpg" alt="ddd2">
+    </body>
+
+
+    </header>
+</html>
